@@ -11,6 +11,11 @@ use Illuminate\Validation\ValidationException;
 class AuthController extends Controller
 {
     // Register user baru
+    /**
+     * Register
+     * @param \Illuminate\Http\Request $request
+     * @return mixed|\Illuminate\Http\JsonResponse
+     */
     public function register(Request $request)
     {
         try {
@@ -52,7 +57,11 @@ class AuthController extends Controller
         }
     }
 
-    // Login user menggunakan email ATAU username
+    /**
+     * login username atau email
+     * @param \Illuminate\Http\Request $request
+     * @return mixed|\Illuminate\Http\JsonResponse
+     */
     public function login(Request $request)
     {
         try {
@@ -110,7 +119,11 @@ class AuthController extends Controller
         ]);
     }
 
-    // Get profile user (alias)
+    /**
+     * Get profile
+     * @param \Illuminate\Http\Request $request
+     * @return mixed|\Illuminate\Http\JsonResponse
+     */
     public function profile(Request $request)
     {
         return response()->json([
@@ -119,7 +132,11 @@ class AuthController extends Controller
         ]);
     }
 
-    // Update profil user
+    /**
+     * updateProfile
+     * @param \Illuminate\Http\Request $request
+     * @return mixed|\Illuminate\Http\JsonResponse
+     */
     public function updateProfile(Request $request)
     {
         try {
@@ -169,7 +186,11 @@ class AuthController extends Controller
         }
     }
 
-    // Logout user
+    /**
+     * logout
+     * @param \Illuminate\Http\Request $request
+     * @return mixed|\Illuminate\Http\JsonResponse
+     */
     public function logout(Request $request)
     {
         try {

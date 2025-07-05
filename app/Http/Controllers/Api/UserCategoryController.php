@@ -9,6 +9,11 @@ use Illuminate\Support\Facades\Validator;
 
 class UserCategoryController extends Controller
 {
+    /**
+     * Get All User Categories
+     * @param \Illuminate\Http\Request $request
+     * @return mixed|\Illuminate\Http\JsonResponse
+     */
     public function index(Request $request)
     {
         $categories = UserCategory::where('user_id', $request->user()->id)
@@ -21,6 +26,11 @@ class UserCategoryController extends Controller
         ]);
     }
 
+    /**
+     * Add New Categories
+     * @param \Illuminate\Http\Request $request
+     * @return mixed|\Illuminate\Http\JsonResponse
+     */
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -51,6 +61,12 @@ class UserCategoryController extends Controller
         ], 201);
     }
 
+    /**
+     * Get Category Details
+     * @param \Illuminate\Http\Request $request
+     * @param mixed $id
+     * @return mixed|\Illuminate\Http\JsonResponse
+     */
     public function show(Request $request, $id)
     {
         $category = UserCategory::where('user_id', $request->user()->id)
@@ -69,6 +85,12 @@ class UserCategoryController extends Controller
         ]);
     }
 
+    /**
+     * Update Categories
+     * @param \Illuminate\Http\Request $request
+     * @param mixed $id
+     * @return mixed|\Illuminate\Http\JsonResponse
+     */
     public function update(Request $request, $id)
     {
         $category = UserCategory::where('user_id', $request->user()->id)
@@ -108,6 +130,12 @@ class UserCategoryController extends Controller
         ]);
     }
 
+    /**
+     * Delete Categories
+     * @param \Illuminate\Http\Request $request
+     * @param mixed $id
+     * @return mixed|\Illuminate\Http\JsonResponse
+     */
     public function destroy(Request $request, $id)
     {
         $category = UserCategory::where('user_id', $request->user()->id)

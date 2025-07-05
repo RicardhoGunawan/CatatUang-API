@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\Validator;
 
 class UserWalletTypeController extends Controller
 {
+    /**
+     * Get All User Wallet Type
+     * @param \Illuminate\Http\Request $request
+     * @return mixed|\Illuminate\Http\JsonResponse
+     */
     public function index(Request $request)
     {
         $walletTypes = UserWalletType::where('user_id', $request->user()->id)
@@ -20,6 +25,11 @@ class UserWalletTypeController extends Controller
         ]);
     }
 
+    /**
+     * Add New User Wallet Type
+     * @param \Illuminate\Http\Request $request
+     * @return mixed|\Illuminate\Http\JsonResponse
+     */
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -48,6 +58,12 @@ class UserWalletTypeController extends Controller
         ], 201);
     }
 
+    /**
+     * Get Wallet Type Details
+     * @param \Illuminate\Http\Request $request
+     * @param mixed $id
+     * @return mixed|\Illuminate\Http\JsonResponse
+     */
     public function show(Request $request, $id)
     {
         $walletType = UserWalletType::where('user_id', $request->user()->id)
@@ -66,6 +82,12 @@ class UserWalletTypeController extends Controller
         ]);
     }
 
+    /**
+     * Update Wallet Type
+     * @param \Illuminate\Http\Request $request
+     * @param mixed $id
+     * @return mixed|\Illuminate\Http\JsonResponse
+     */
     public function update(Request $request, $id)
     {
         $walletType = UserWalletType::where('user_id', $request->user()->id)
@@ -103,6 +125,12 @@ class UserWalletTypeController extends Controller
         ]);
     }
 
+    /**
+     * Delete Wallet Type
+     * @param \Illuminate\Http\Request $request
+     * @param mixed $id
+     * @return mixed|\Illuminate\Http\JsonResponse
+     */
     public function destroy(Request $request, $id)
     {
         $walletType = UserWalletType::where('user_id', $request->user()->id)

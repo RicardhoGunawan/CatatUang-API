@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\Validator;
 
 class TransactionController extends Controller
 {
+    /**
+     * Get All User Transactions
+     * @param \Illuminate\Http\Request $request
+     * @return mixed|\Illuminate\Http\JsonResponse
+     */
     public function index(Request $request)
     {
         $query = Transaction::with(['wallet', 'category'])
@@ -44,6 +49,11 @@ class TransactionController extends Controller
         ]);
     }
 
+    /**
+     * Add New Transaction
+     * @param \Illuminate\Http\Request $request
+     * @return mixed|\Illuminate\Http\JsonResponse
+     */
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -114,6 +124,12 @@ class TransactionController extends Controller
         }
     }
 
+    /**
+     * Get transactions Details
+     * @param \Illuminate\Http\Request $request
+     * @param mixed $id
+     * @return mixed|\Illuminate\Http\JsonResponse
+     */
     public function show(Request $request, $id)
     {
         $transaction = Transaction::with(['wallet', 'category'])
@@ -133,6 +149,12 @@ class TransactionController extends Controller
         ]);
     }
 
+    /**
+     * Update Transactions 
+     * @param \Illuminate\Http\Request $request
+     * @param mixed $id
+     * @return mixed|\Illuminate\Http\JsonResponse
+     */
     public function update(Request $request, $id)
     {
         $transaction = Transaction::where('user_id', $request->user()->id)
@@ -220,6 +242,12 @@ class TransactionController extends Controller
         }
     }
 
+    /**
+     * Delete Transactions
+     * @param \Illuminate\Http\Request $request
+     * @param mixed $id
+     * @return mixed|\Illuminate\Http\JsonResponse
+     */
     public function destroy(Request $request, $id)
     {
         $transaction = Transaction::where('user_id', $request->user()->id)
@@ -260,6 +288,11 @@ class TransactionController extends Controller
         }
     }
 
+    /**
+     * Get Transactions Summary 
+     * @param \Illuminate\Http\Request $request
+     * @return mixed|\Illuminate\Http\JsonResponse
+     */
     public function summary(Request $request)
     {
         $userId = $request->user()->id;
